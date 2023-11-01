@@ -1,0 +1,193 @@
+import React from "react";
+import "./style.css"
+import "./WordSearch"
+import {
+    Container, TextField, Button, ToggleButtonGroup, ToggleButton,
+} from "@mui/material";
+
+export const MainPage: React.FC = () => {
+    const containerStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        backgroundColor: 'white',
+        padding: '16px 32px',
+    };
+
+    const headerStyle: React.CSSProperties = {
+        padding: '20px',
+        backgroundColor: 'blueviolet',
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginBottom: '8px',
+        marginLeft: '8px',
+        color:"white",
+
+    };
+
+    const rightContainerStyle1: React.CSSProperties = {
+        display: 'flex',
+        gap: '8px',
+        alignItems:'flex-end',
+        alignContent:'flex-end',
+        alignSelf:'flex-end'
+    };
+
+    const rightContainerStyle: React.CSSProperties = {
+        // backgroundColor: 'pink',
+        display: 'flex',
+        flexGrow: 1,
+        alignItems: 'flex-start',
+        justifyContent: 'space-around',
+
+    };
+
+    const contentStyle: React.CSSProperties = {
+        display: 'flex',
+        flexGrow: 1,
+        position: 'relative',
+        height: '100%',
+    };
+
+    const leftContainerStyle: React.CSSProperties = {
+        backgroundColor: 'orange',
+        marginRight: '8px',
+        width: '33%',
+        whiteSpace: 'pre-line'
+    };
+
+    const rightContentStyle: React.CSSProperties = {
+        backgroundColor: 'pink',
+        display: 'flex',
+        flexGrow: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'space-around',
+    };
+
+    const semicircleStyle: React.CSSProperties = {
+        width: '400px',
+        height: '130px',
+        backgroundColor: 'orange',
+        position: 'absolute',
+        top: '0',
+        borderRadius: '0 0 250px 250px',
+
+        display: 'flex',
+        justifyContent: 'center',  // Center horizontally
+        alignItems: 'center',      // Center vertically
+        textAlign: 'center',       // Center text horizontally within the container
+        lineHeight: '130px',
+
+
+    };
+
+    const squareInstagram: React.CSSProperties = {
+        width: '300px',
+        height: '600px',
+        marginTop: '150px',
+        backgroundColor: 'violet',
+        marginBottom: '8px',
+        color:'white',
+        whiteSpace: 'pre-line'
+    };
+
+    const squareFacebook: React.CSSProperties = {
+        width: '300px',
+        height: '600px',
+        marginTop: '150px',
+        backgroundColor: 'blue',
+        marginBottom: '8px',
+        color:'white',
+    };
+
+    const squareX: React.CSSProperties = {
+        width: '300px',
+        height: '600px',
+        marginTop: '150px',
+        backgroundColor: 'black',
+        marginBottom: '8px',
+        color:'white',
+    };
+
+    const footerStyle: React.CSSProperties = {
+        backgroundColor: 'green',
+        marginTop: '8px',
+        padding: '8px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        color:'white',
+    };
+
+    // <div className="root-container">
+    //     <header className="header">
+    //         <button>Button 1</button>
+    //
+    //         <div className="right-container">
+    //             <button>Button 2</button>
+    //             <button>Button 3</button>
+    //         </div>
+    //     </header>
+    //     <div className="content">
+    //         <div className="left-container"></div>
+    //         <div className="right-container">
+    //             <div className="semicircle"></div>
+    //             <div className="square"></div>
+    //             <div className="square"></div>
+    //             <div className="square"></div>
+    //         </div>
+    //     </div>
+    //     <footer className="footer">Centered text</footer>
+    // </div>
+
+    return(
+        <Container>
+            <div style={containerStyle} className="root-container">
+                <h1 style={headerStyle} className="header">
+                    <div style={rightContainerStyle1} className="right-container">
+                        <Button style={{alignItems:"flex-end", color:"black", borderColor:"black"}}>
+                            YOUR PROFILE
+                        </Button>
+                    </div>
+                </h1>
+                <div style={contentStyle} className="content">
+                    <div style={leftContainerStyle} className="left-container">
+
+                    </div>
+                    <div style={rightContainerStyle} className="right-container">
+
+                        <TextField style={{marginLeft:"8px"}}
+                            id="searchbar"
+                            label="Search a word"
+                            variant="outlined"
+                        />
+
+                        <Button type="submit" style={{alignItems:"flex", color:"black", borderColor:"black"}}>
+                            SEARCH
+                        </Button>
+
+                        <ToggleButtonGroup style={{backgroundColor:"white"}}
+                            color="primary"
+
+                            exclusive
+                            //onChange={handleChange}
+                            aria-label="Platform"
+                        >
+                            <ToggleButton value="instagram">instagram</ToggleButton>
+                            <ToggleButton value="facebook">facebook</ToggleButton>
+                            <ToggleButton value="X">X</ToggleButton>
+                        </ToggleButtonGroup>
+
+                    </div>
+                </div>
+                <footer style={footerStyle} className="footer">
+                    Word of the day
+                    <div style={rightContainerStyle} className="right-container">
+                        <button>SEND US A MESSAGE</button>
+
+                    </div>
+                </footer>
+            </div>
+        </Container>
+    )
+
+}
