@@ -20,7 +20,7 @@ export const MainPage: React.FC = () => {
         display: 'flex',
         justifyContent: 'space-between',
         marginBottom: '8px',
-        marginLeft: '8px',
+        // marginLeft: '8px',
         color:"white",
 
     };
@@ -154,35 +154,36 @@ export const MainPage: React.FC = () => {
 
                     </div>
                     <div style={rightContainerStyle} className="right-container">
+                        <div>
+                            <TextField style={{marginLeft:"8px"}}
+                                id="searchbar"
+                                label="Search a word"
+                                variant="outlined"
+                            />
 
-                        <TextField style={{marginLeft:"8px"}}
-                            id="searchbar"
-                            label="Search a word"
-                            variant="outlined"
-                        />
+                            <Button type="submit" style={{alignItems:"flex", color:"black", borderColor:"black"}}>
+                                SEARCH
+                            </Button>
+                        </div>
+                        <div>
+                            <ToggleButtonGroup style={{backgroundColor:"white"}}
+                                color="primary"
 
-                        <Button type="submit" style={{alignItems:"flex", color:"black", borderColor:"black"}}>
-                            SEARCH
-                        </Button>
-
-                        <ToggleButtonGroup style={{backgroundColor:"white"}}
-                            color="primary"
-
-                            exclusive
-                            //onChange={handleChange}
-                            aria-label="Platform"
-                        >
-                            <ToggleButton value="instagram">instagram</ToggleButton>
-                            <ToggleButton value="facebook">facebook</ToggleButton>
-                            <ToggleButton value="X">X</ToggleButton>
-                        </ToggleButtonGroup>
-
+                                exclusive
+                                //onChange={handleChange}
+                                aria-label="Platform"
+                            >
+                                <ToggleButton value="instagram">instagram</ToggleButton>
+                                <ToggleButton value="facebook">facebook</ToggleButton>
+                                <ToggleButton value="X">X</ToggleButton>
+                            </ToggleButtonGroup>
+                        </div>
                     </div>
                 </div>
                 <footer style={footerStyle} className="footer">
-                    Word of the day
+
                     <div style={rightContainerStyle} className="right-container">
-                        <button>SEND US A MESSAGE</button>
+                        <Button style={{color:"white"}}>SEND US A MESSAGE</Button>
 
                     </div>
                 </footer>
