@@ -1,9 +1,13 @@
 import React from "react";
-import "./style.css"
-import "./WordSearch"
+
 import {
     Container, TextField, Button, ToggleButtonGroup, ToggleButton,
 } from "@mui/material";
+import {Link} from "react-router-dom";
+import "./style.css"
+import SearchBar from "./SearchBar";
+import SearchBarComponent from "./SearchBar";
+
 
 export const MainPage: React.FC = () => {
     const containerStyle: React.CSSProperties = {
@@ -61,7 +65,7 @@ export const MainPage: React.FC = () => {
         display: 'flex',
         flexGrow: 1,
         alignItems: 'flex-end',
-        justifyContent: 'space-around',
+        justifyContent: 'space-around'
     };
 
     const semicircleStyle: React.CSSProperties = {
@@ -118,26 +122,7 @@ export const MainPage: React.FC = () => {
         color:'white',
     };
 
-    // <div className="root-container">
-    //     <header className="header">
-    //         <button>Button 1</button>
-    //
-    //         <div className="right-container">
-    //             <button>Button 2</button>
-    //             <button>Button 3</button>
-    //         </div>
-    //     </header>
-    //     <div className="content">
-    //         <div className="left-container"></div>
-    //         <div className="right-container">
-    //             <div className="semicircle"></div>
-    //             <div className="square"></div>
-    //             <div className="square"></div>
-    //             <div className="square"></div>
-    //         </div>
-    //     </div>
-    //     <footer className="footer">Centered text</footer>
-    // </div>
+
 
     return(
         <Container>
@@ -146,20 +131,22 @@ export const MainPage: React.FC = () => {
                     <div style={rightContainerStyle1} className="right-container">
                         <Button style={{alignItems:"flex-end", color:"black", borderColor:"black"}}>
                             YOUR PROFILE
+
                         </Button>
                     </div>
                 </h1>
                 <div style={contentStyle} className="content">
-                    <div style={leftContainerStyle} className="left-container">
+                    <div style={leftContainerStyle} className="left-container-statistics">
 
                     </div>
-                    <div style={rightContainerStyle} className="right-container">
+                    <div style={rightContainerStyle} className="right-container-searched-apps">
                         <div>
-                            <TextField style={{marginLeft:"8px"}}
-                                id="searchbar"
-                                label="Search a word"
-                                variant="outlined"
-                            />
+                            {/*<TextField style={{marginLeft:"8px"}}*/}               {/* <- this is how the searchbar was hardcoded*/}
+                            {/*    id="searchbar"*/}
+                            {/*    label="Search a word"*/}
+                            {/*    variant="outlined"*/}
+                            {/*/>*/}
+                            <SearchBarComponent/>                                     {/* <- this is how it is now, called from the file*/}
 
                             <Button type="submit" style={{alignItems:"flex", color:"black", borderColor:"black"}}>
                                 SEARCH
@@ -178,6 +165,7 @@ export const MainPage: React.FC = () => {
                                 <ToggleButton value="X">X</ToggleButton>
                             </ToggleButtonGroup>
                         </div>
+
                     </div>
                 </div>
                 <footer style={footerStyle} className="footer">
