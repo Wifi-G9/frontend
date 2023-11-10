@@ -1,14 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {ReactNode, useState} from 'react';
 import './App.css';
-import './components/style.css'
-import {MainPage} from "./components/MainPage";
-// import MainPage from "./components/MainPage";
+import './components/MainPage/MainPageStyle.css'
+import {MainPage} from "./components/MainPage/MainPage";
+
+import {BrowserRouter, Routes, Router, Route} from 'react-router-dom';
+
+
 function App() {
+    const [count, setCount] =   useState(0)
+
     return (
-       <MainPage/>
+
+
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainPage />} />
+
+            </Routes>
+        </BrowserRouter>
 
     );
 }
 
-export default App;
+export default App

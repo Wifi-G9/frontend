@@ -1,64 +1,107 @@
-.root-container {
+/* styles.css */
+
+.container {
     display: flex;
     flex-direction: column;
     height: 100%;
     background-color: white;
     padding: 16px 32px;
+}
 
-    .header {
-        padding: 8px;
-        background-color: blue;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
+.header {
+    padding: 20px;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    color: white;
+}
 
-        .right-container {
-            display: flex;
-            gap: 8px;
-        }
-    }
+.rightContainer1 {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
+}
 
-    .content {
-        display: flex;
-        flex-grow: 1;
-        position: relative;
+.rightContainer {
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: pink;
+}
 
-        .left-container {
-            background-color: orange;
-            margin-right: 8px;
-            width: 30%;
-        }
+.content {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+}
 
-        .right-container {
-            background-color: violet;
-            display: flex;
-            flex-grow: 1;
-            align-items: flex-end;
-            justify-content: space-around;
+.leftContainer {
+    background-color: orange;
+    margin-right: 8px;
+    width: 33%;
+    white-space: pre-line;
+}
 
-            .semicircle {
-                width: 400px;
-                height: 200px;
-                background-color: orange;
-                position: absolute;
-                top: 0;
-                border-radius: 0 0 250px 250px;
-            }
+.rightContent {
+    background-color: pink;
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: space-around;
+}
 
-            .square {
-                width: 200px;
-                height: 200px;
-                background-color: white;
-                margin-bottom: 8px;
-            }
-        }
-    }
+.semicircle {
+    width: 400px;
+    height: 130px;
+    background-color: orange;
+    position: absolute;
+    top: 0;
+    border-radius: 0 0 250px 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 130px;
+}
 
-    .footer {
-        background-color: green;
-        margin-top: 8px;
-        padding: 8px;
-        display: flex;
-        justify-content: center;
-    }
+.squareInstagram {
+    width: 300px;
+    height: 600px;
+    margin-top: 150px;
+    background-color: violet;
+    margin-bottom: 8px;
+    color: white;
+    white-space: pre-line;
+}
+
+.squareFacebook {
+    width: 300px;
+    height: 600px;
+    margin-top: 150px;
+    background-color: blue;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.squareX {
+    width: 300px;
+    height: 600px;
+    margin-top: 150px;
+    background-color: black;
+    margin-bottom: 8px;
+    color: white;
+}
+
+.footer {
+    background-color: green;
+    margin-top: 8px;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
 }
