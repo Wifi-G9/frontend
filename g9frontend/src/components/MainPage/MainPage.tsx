@@ -4,7 +4,7 @@ import {
     Container, TextField, Button, ToggleButtonGroup, ToggleButton,
 } from "@mui/material";
 import {Link} from "react-router-dom";
-import "./style.css"
+import "./MainPageStyle.css"
 import SearchBar from "./SearchBar";
 import SearchBarComponent from "./SearchBar";
 
@@ -137,16 +137,16 @@ export const MainPage: React.FC = () => {
                 </h1>
                 <div style={contentStyle} className="content">
                     <div style={leftContainerStyle} className="left-container-statistics">
-
+                        {/*here will be the graph part*/}
                     </div>
                     <div style={rightContainerStyle} className="right-container-searched-apps">
                         <div>
-                            {/*<TextField style={{marginLeft:"8px"}}*/}               {/* <- this is how the searchbar was hardcoded*/}
+                            {/*<TextField style={{marginLeft:"8px"}}*/}
                             {/*    id="searchbar"*/}
                             {/*    label="Search a word"*/}
                             {/*    variant="outlined"*/}
                             {/*/>*/}
-                            <SearchBarComponent/>                                     {/* <- this is how it is now, called from the file*/}
+                            <SearchBarComponent/>
 
                             <Button type="submit" style={{alignItems:"flex", color:"black", borderColor:"black"}}>
                                 SEARCH
