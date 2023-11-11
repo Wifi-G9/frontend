@@ -1,1 +1,21 @@
-a
+.searchBar {
+    padding: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 15px !important;
+    font-size: 16px !important;
+    width: 500px !important;
+    margin-right: 10px !important;
+    outline: none !important;
+    font-family:  'Inter', sans-serif !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.searchBar::placeholder {
+    color: #aaa !important;
+    font-family:  'Inter', sans-serif !important;
+}
+
+/* Add styles for focus state */
+.searchBar:focus {
+    box-shadow: 0 0 8px #5e61ed !important; /* Add a subtle box shadow on focus */
+}
