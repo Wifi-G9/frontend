@@ -1,1 +1,34 @@
-a
+.toggleGroupContainer {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+/* For React components, you have to specify !important so that the style is registered */
+.toggleButton {
+    text-transform: none !important;
+    flex: 1 !important;
+    border: 1px solid transparent !important;
+    border-bottom-color: #dadada !important;
+    border-bottom-width: 4px !important; 
+}
+
+.toggleButton:hover {
+    border-color: #e9e9e9 !important;
+    border-bottom-width: 4px !important; /* Set your desired border color (transparent to keep it invisible) */
+    border-bottom-color: #5e61ed !important;
+}
+
+/* Adjust the border color when the button is pressed */
+.toggleButton[aria-hover="true"] {
+    border-color: transparent !important;
+    border-bottom-width: 4px !important; /* Set your desired border color (transparent to keep it invisible) */
+    border-bottom-color: #5e61ed !important;
+}
+
+.postContentContainer {
+    background-color: #e9e9e9;
+    height: 500px;
+}
