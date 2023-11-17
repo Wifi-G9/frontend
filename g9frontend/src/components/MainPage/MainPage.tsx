@@ -10,15 +10,20 @@ import SearchBarComponent from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
 import MessageIcon from '@mui/icons-material/Message';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
-
+import DescriptionWord from "../Description/Description";
 import InstagramComponent from "../GetInsta/GetInsta";
 import GraphComponent from "../Graph/Graph";
 
 
 export const MainPage: React.FC = () => {
     const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-    const [theWord, setSearchTerm] = useState<string | null>(null);
     const [posts, setPosts] = useState<React.CElement<any, any>>();
+
+    const [theWord, setSearchTerm] = useState('');
+
+    const handleSearch = (searchTerm: string) => {
+        setSearchTerm(searchTerm);
+    };
 
     const handleSelect = (selectedButton: string): void => {
         setSelectedPlatform(selectedButton);
@@ -58,11 +63,14 @@ export const MainPage: React.FC = () => {
                     <div className="leftContainer">
                         <div className="GraphContainer">
                             <GraphComponent/>
+                            <DescriptionWord />
                         </div>
                     </div>
                     <div className="rightContainer">
                         <div className="searchBarContainer">
-                            <SearchBarComponent/>
+                            <SearchBarComponent onSearch={handleSearch}/>
+                                    Searched component: {theWord}
+
                         </div>
                         <div className="toggleGroupContainer">
                             <ToggleButtonGroup
