@@ -1,0 +1,8 @@
+.sendUsAMessageButton{
+    color:"black" !important;
+    border-radius: '50%' !important;
+    position: 'fixed' !important;
+    bottom: '20px' !important;
+    right: '20px' !important; 
+    box-shadow: '0px 0px 10px rgba(0, 0, 0, 0.2)' !important;
+}
