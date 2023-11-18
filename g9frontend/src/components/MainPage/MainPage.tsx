@@ -12,6 +12,8 @@ import MessageIcon from '@mui/icons-material/Message';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
 
 import InstagramComponent from "../GetInsta/GetInsta";
+import GraphComponent from "../Graph/Graph";
+
 
 export const MainPage: React.FC = () => {
     const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
@@ -54,7 +56,9 @@ export const MainPage: React.FC = () => {
                 </div>
                 <div className="content">
                     <div className="leftContainer">
-                        {/* Here will be the graph part */}
+                    <div className="GraphContainer">
+                            <GraphComponent/>
+                        </div>
                     </div>
                     <div className="rightContainer">
                         <div className="searchBarContainer">
