@@ -8,6 +8,8 @@ import "./MainPageStyle.css"
 import SearchBarComponent from "../SearchBar/SearchBar";
 import { CenterFocusStrong } from "@mui/icons-material";
 import MessageIcon from '@mui/icons-material/Message';
+import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
+
 
 export const MainPage: React.FC = () => {
     return(
@@ -50,9 +52,9 @@ export const MainPage: React.FC = () => {
 
                     </div>
                 </div>
-                <IconButton style={{color:"black", borderRadius: '50%', position: 'fixed', bottom: '20px', right: '20px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)'}}>
-                    <MessageIcon />
-                </IconButton>
+                <div className="SendUsAMessageContainer">
+                    <SendUsAMessageButtonComponent/>
+                </div>
             </div>
         </Container>
     )
