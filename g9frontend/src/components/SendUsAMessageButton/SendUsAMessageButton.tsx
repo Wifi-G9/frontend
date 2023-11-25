@@ -1,27 +1,49 @@
-import React, { ReactNode } from 'react';
-import "./SendUsAMessageButtonStyle.css";
+import React, {useState} from 'react';
+import './SendUsAMessageButtonStyle.css';
 import MessageIcon from '@mui/icons-material/Message';
 
-
-
 const SendUsAMessageButtonComponent: React.FC = () => {
-    const clickMe = () => {
-        const messageText = "This app is really cool.";
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [messageText, setMessageText] = useState("");
 
-        // Send a POST request to the /developer-message endpoint
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeAndSendMessage = () => {
+        // Send a POST request to the /developer-message endpoint with the custom message
         fetch('/developer-message', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ text: messageText }),
-        })
+            body: JSON.stringify({text: messageText}),
+        }).then(r => {
+            console.log(r)
+        });
+
+        // Close the modal
+        setIsModalOpen(false);
     };
 
     return (
-        <button className='sendUsAMessageButton' onClick={clickMe} style={{  position: 'fixed', bottom: '20px', right: '20px' }}>
-            <MessageIcon />
-        </button>
+        <div>
+            <button className='sendUsAMessageButton' onClick={openModal}>
+                <MessageIcon/>
+            </button>
+
+            <div className={`modal-overlay ${isModalOpen ? 'modal-open' : ''}`}>
+                <div className={`modal-content ${isModalOpen ? 'modal-content-open' : ''}`}>
+                    <textarea
+                        value={messageText}
+                        onChange={(e) => setMessageText(e.target.value)}
+                        placeholder="Type your message here..."
+                        className='textarea-input'
+                    />
+                    <button onClick={closeAndSendMessage}>Send Message</button>
+                </div>
+            </div>
+        </div>
     );
 };
 
