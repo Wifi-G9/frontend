@@ -1,1 +1,27 @@
-a
+/* MainPageStyle.css or YourButtonStyles.css */
+
+.toggleButton {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggleButton:hover {
+    background-color: #f0f0f0;
+}
+
+.toggleButton.isSelected {
+    background-color: #3366ff;
+    color: white;
+    border-color: #3366ff;
+}
+
+/* Add more specific styles as needed */
