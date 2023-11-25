@@ -21,7 +21,7 @@ git clone https://github.com/WiFi-G9/frontend.git
 
 ## Step 2: Navigate to the Project Directory
 ```
-cd frontend
+cd frontend/g9frontend
 ```
 
 ## Step 3: Install Dependencies
