@@ -22,6 +22,7 @@ export const MainPage: React.FC = () => {
     const [theWord, setSearchTerm] = useState('');
 
     const handleSearch = (searchTerm: string) => {
+        console.log("User searched for:", theWord);
         setSearchTerm(searchTerm);
     };
 
@@ -63,7 +64,7 @@ export const MainPage: React.FC = () => {
                     <div className="leftContainer">
                         <div className="GraphContainer">
                             <GraphComponent/>
-                            <DescriptionWord />
+                            <DescriptionWord theWord={theWord}/>
                         </div>
                     </div>
                     <div className="rightContainer">
