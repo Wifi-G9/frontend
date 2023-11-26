@@ -1,40 +1,40 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     Container,
     Button,
     ToggleButtonGroup,
     IconButton,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import "./MainPageStyle.css";
 import SearchBarComponent from "../SearchBar/SearchBar";
-import ToggleButton  from "../ToggleButton/ToggleButton";
-import useFetchPosts from "../GetInsta/GetInsta";
+import ToggleButton from "../ToggleButton/ToggleButton";
 import MessageIcon from '@mui/icons-material/Message';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
 
+import InstagramComponent from "../GetInsta/GetInsta";
 
-interface Post {
-    link: string;
-    description: string;
-    likes: number;
-    comments: number;
-    hashtags: string[];
-    engagement_score: number;
-    sentiment_analysis: {
-        sentiment: string;
-        score: number;
-    };
-    image_description: string;
-}
-
-export const MainPage: React.FC = () =>  {
+export const MainPage: React.FC = () => {
     const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
     const [theWord, setSearchTerm] = useState<string | null>(null);
-    const posts: Post[] = useFetchPosts(theWord, selectedPlatform);
+    const [posts, setPosts] = useState<React.CElement<any, any>>();
 
-    function handleSelect(selectedButton: string) {
+    const handleSelect = (selectedButton: string): void => {
         setSelectedPlatform(selectedButton);
+
+        // FIXME: hack to set the word before the searched word PR is merged
+        setSearchTerm("cats");
+
+        if (selectedButton === "instagram") {
+            if (theWord === null) {
+                console.error("cannot render instagram post, the search word is not set.");
+            } else {
+                setPosts(<InstagramComponent query={theWord}/>);
+            }
+        } else {
+            setPosts(<div>
+                <p>Not available</p>
+            </div>);
+        }
     }
 
     return (
@@ -42,7 +42,13 @@ export const MainPage: React.FC = () =>  {
             <div className="container">
                 <div className="header">
                     <p className="logo">WiFi</p>
-                    <Button style={{ textTransform: 'none', color: '#f7fefe', right: '3%', fontFamily: 'Inter, sans-serif', fontSize: '20px' }}>
+                    <Button style={{
+                        textTransform: 'none',
+                        color: '#f7fefe',
+                        right: '3%',
+                        fontFamily: 'Inter, sans-serif',
+                        fontSize: '20px'
+                    }}>
                         Log in
                     </Button>
                 </div>
@@ -52,34 +58,28 @@ export const MainPage: React.FC = () =>  {
                     </div>
                     <div className="rightContainer">
                         <div className="searchBarContainer">
-                            <SearchBarComponent />
+                            <SearchBarComponent/>
                         </div>
                         <div className="toggleGroupContainer">
-                            <ToggleButtonGroup style={{ backgroundColor: '#e9e9e9', fontFamily: 'Inter, sans-serif', width: '100%' }}
-                                               color="primary"
-                                               exclusive
-                                               aria-label="Platform"
+                            <ToggleButtonGroup
+                                style={{backgroundColor: '#e9e9e9', fontFamily: 'Inter, sans-serif', width: '100%'}}
+                                color="primary"
+                                exclusive
+                                aria-label="Platform"
                             >
-                                <ToggleButton className="toggleButton" value='instagram' isSelected={selectedPlatform === "instagram"} onSelect={() => handleSelect("instagram")}>Instagram</ToggleButton>
-                                <ToggleButton className="toggleButton" value='facebook' isSelected={selectedPlatform === "facebook"} onSelect={() => handleSelect("facebook")}>Facebook</ToggleButton>
-                                <ToggleButton className="toggleButton" value='X' isSelected={selectedPlatform === "x"} onSelect={() => handleSelect("x")}>X</ToggleButton>
+                                <ToggleButton className="toggleButton" value='instagram'
+                                              isSelected={selectedPlatform === "instagram"}
+                                              onSelect={() => handleSelect("instagram")}>Instagram</ToggleButton>
+                                <ToggleButton className="toggleButton" value='facebook'
+                                              isSelected={selectedPlatform === "facebook"}
+                                              onSelect={() => handleSelect("facebook")}>Facebook</ToggleButton>
+                                <ToggleButton className="toggleButton" value='X' isSelected={selectedPlatform === "x"}
+                                              onSelect={() => handleSelect("x")}>X</ToggleButton>
                             </ToggleButtonGroup>
                             <div className="postContentContainer">
                                 {!selectedPlatform && <p>Word of the day </p>}
-                                {(selectedPlatform && posts) &&
-                                    (posts.map((post) => (
-                                        <div key={post.link}>
-                                            <p>Description: {post.description}</p>
-                                            <p>Likes: {post.likes}</p>
-                                            <p>Comments: {post.comments}</p>
-                                            <p>Link: <a href={post.link} target="_blank" rel="noopener noreferrer">{post.link}</a></p>
-                                            <p>Hashtags: {post.hashtags.join(', ')}</p>
-                                            <p>Engagement Score: {post.engagement_score}</p>
-                                            <p>Sentiment: {post.sentiment_analysis.sentiment}</p>
-                                            <p>Score: {post.sentiment_analysis.score}</p>
-                                            <p>Image Description: {post.image_description}</p>
-                                        </div>
-                                    )))
+                                {(selectedPlatform) &&
+                                    (posts)
                                 }
                             </div>
                         </div>
