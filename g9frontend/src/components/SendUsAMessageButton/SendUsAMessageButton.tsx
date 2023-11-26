@@ -10,6 +10,11 @@ const SendUsAMessageButtonComponent: React.FC = () => {
         setIsModalOpen(true);
     };
 
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setMessageText("");
+    };
+
     const closeAndSendMessage = () => {
         // Send a POST request to the /developer-message endpoint with the custom message
         fetch('/developer-message', {
@@ -23,7 +28,7 @@ const SendUsAMessageButtonComponent: React.FC = () => {
         });
 
         // Close the modal
-        setIsModalOpen(false);
+        closeModal();
     };
 
     return (
@@ -34,13 +39,17 @@ const SendUsAMessageButtonComponent: React.FC = () => {
 
             <div className={`modal-overlay ${isModalOpen ? 'modal-open' : ''}`}>
                 <div className={`modal-content ${isModalOpen ? 'modal-content-open' : ''}`}>
+                <div className="modal-title">Send us a message!</div>
                     <textarea
                         value={messageText}
                         onChange={(e) => setMessageText(e.target.value)}
                         placeholder="Type your message here..."
                         className='textarea-input'
                     />
-                    <button onClick={closeAndSendMessage}>Send Message</button>
+                    <div className="button-container">
+                        <button onClick={closeAndSendMessage} className='textarea-button'>Send Message</button>
+                        <button onClick={closeModal} className="textarea-button">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

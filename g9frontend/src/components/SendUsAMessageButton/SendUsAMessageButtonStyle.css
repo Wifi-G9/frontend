@@ -1,7 +1,32 @@
 .sendUsAMessageButton {
     position: fixed;
+    border-radius:50%;
+    height: 37px;
+    width: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     bottom: 20px;
     right: 20px;
+}
+
+.sendUsAMessageButton :hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.sendUsAMessageButton:hover MessageIcon {
+    fill: white; /* Adjust the color of the icon on hover */
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333; /* Choose your desired text color */
 }
 
 .modal-overlay {
@@ -40,4 +65,23 @@
 
 .modal-content-open {
     transform: translateX(-50%) translateY(-100%);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.textarea-button {
+    background-color: #ccc;
+    color: #333;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.textarea-button:hover {
+    background-color: #ddd;
 }

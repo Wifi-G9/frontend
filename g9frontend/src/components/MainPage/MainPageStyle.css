@@ -82,7 +82,7 @@ html, body {
     flex: 1 !important;
     border: 1px solid transparent !important;
     border-bottom-color: #dadada !important;
-    border-bottom-width: 4px !important; 
+    border-bottom-width: 4px !important;
 }
 
 .toggleButton:hover {
