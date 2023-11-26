@@ -56,7 +56,7 @@ export const MainPage: React.FC = () => {
                 </div>
                 <div className="content">
                     <div className="leftContainer">
-                    <div className="GraphContainer">
+                        <div className="GraphContainer">
                             <GraphComponent/>
                         </div>
                     </div>
