@@ -52,9 +52,7 @@ export const MainPage: React.FC = () => {
 
                     </div>
                 </div>
-                <div className="SendUsAMessageContainer">
-                    <SendUsAMessageButtonComponent/>
-                </div>
+                <SendUsAMessageButtonComponent/>
             </div>
         </Container>
     )
