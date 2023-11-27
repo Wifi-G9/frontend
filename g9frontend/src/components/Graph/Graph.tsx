@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Bar} from 'react-chartjs-2'
 import {Chart, registerables} from 'chart.js'
 import {ToggleButtonGroup, ToggleButton} from "@mui/material";
-import {GraphMockData} from "./GraphMockData";
+import {MonthGraphMockData, YearGraphMockData} from "./GraphMockData";
 import "./GraphStyle.css"
 
 Chart.register(...registerables)
@@ -88,7 +88,11 @@ const GraphComponent: React.FC = () => {
                     console.error('Error fetching data from backend:', e);
                 }
             } else {
-                data = GraphMockData;
+                if (timePeriod === 'month') {
+                    data = MonthGraphMockData;
+                } else {
+                    data = YearGraphMockData;
+                }
             }
 
             const newData = {

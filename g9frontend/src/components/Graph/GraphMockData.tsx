@@ -3,7 +3,7 @@ interface DataPieceType {
     interest: number
 }
 
-const GraphMockData: DataPieceType[] = [
+const MonthGraphMockData: DataPieceType[] = [
     {
         "date": "2020-01-01",
         "interest": 20
@@ -110,5 +110,33 @@ const GraphMockData: DataPieceType[] = [
     }
 ];
 
-export {GraphMockData}
+
+const YearGraphMockData: DataPieceType[] = [
+    {
+        "date": "2023-01-01",
+        "interest": 88
+    },
+    {
+        "date": "2022-01-01",
+        "interest": 22
+    },
+    {
+        "date": "2021-01-01",
+        "interest": 44
+    },
+    {
+        "date": "2020-01-01",
+        "interest": 55
+    },
+    {
+        "date": "2019-01-01",
+        "interest": 90
+    },
+    {
+        "date": "2018-01-01",
+        "interest": 30
+    }
+];
+
+export {MonthGraphMockData, YearGraphMockData}
 export type {DataPieceType}
