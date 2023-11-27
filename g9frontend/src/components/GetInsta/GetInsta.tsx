@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 import React from 'react'
+import './GetInstaStyle.css'
 
 interface Post {
     link: string;
@@ -18,7 +19,7 @@ interface Post {
 
 const mocPosts: Post[] = [
     {
-        "link": "https://www.instagram.com/p/CWO6hY_j_rX/",
+        "link": "https://www.instagram.com/p/C0HZCaoidDN/",
         "description": "AI is the future!",
         "sentiment_analysis": {
             "sentiment": "positive",
@@ -93,22 +94,23 @@ const InstagramComponent: React.FC<{ query: string }> = ({query}) => {
         }
     }, [debug, query]);
 
-    return (<div>
-        {posts.map((post) => (
-            <div key={post.link}>
-                <p>Description: {post.description}</p>
-                <p>Likes: {post.likes}</p>
-                <p>Comments: {post.comments}</p>
-                <p>Link: <a href={post.link} target="_blank"
-                            rel="noopener noreferrer">{post.link}</a></p>
-                <p>Hashtags: {post.hashtags.join(', ')}</p>
-                <p>Engagement Score: {post.engagement_score}</p>
-                <p>Sentiment: {post.sentiment_analysis.sentiment}</p>
-                <p>Score: {post.sentiment_analysis.score}</p>
-                <p>Image Description: {post.image_description}</p>
-            </div>
-        ))}
-    </div>);
+    return (
+        <div className="instagram-container">
+            {posts.map((post) => (
+                <div key={post.link} className="instagram-post">
+                    <p>Description: {post.description}</p>
+                    <p>Likes: {post.likes}</p>
+                    <p>Comments: {post.comments}</p>
+                    <p>Link: <a href={post.link} target="_blank"
+                                rel="noopener noreferrer">{post.link}</a></p>
+                    <p>Hashtags: {post.hashtags.join(', ')}</p>
+                    <p>Engagement Score: {post.engagement_score}</p>
+                    <p>Sentiment: {post.sentiment_analysis.sentiment}</p>
+                    <p>Score: {post.sentiment_analysis.score}</p>
+                    <p>Image Description: {post.image_description}</p>
+                </div>
+            ))}
+        </div>);
 };
 
 export default InstagramComponent;

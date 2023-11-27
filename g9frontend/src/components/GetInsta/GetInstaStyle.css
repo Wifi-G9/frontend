@@ -1,1 +1,40 @@
-a
+/* InstagramComponent.css */
+
+.instagram-container {
+    max-width: 800px;
+    max-height: 440px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: #f2f2f2; */
+    background-color: #ffd4d5;
+    /* background-color: #FFB673; */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Add this line to enable vertical scrollbar when needed */
+}
+
+.instagram-post {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.instagram-post:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.instagram-post p {
+    margin: 5px 0;
+}
+
+.instagram-post a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.instagram-post a:hover {
+    text-decoration: underline;
+}
