@@ -26,7 +26,7 @@ export const MainPage: React.FC = () => {
 
         if (selectedButton === "instagram") {
             if (theWord === null) {
-                console.error("cannot render instagram post, the search word is not set.");
+                console.error("Cannot render instagram post, the search word is not set.");
             } else {
                 setPosts(<InstagramComponent query={theWord}/>);
             }
@@ -77,7 +77,6 @@ export const MainPage: React.FC = () => {
                                               onSelect={() => handleSelect("x")}>X</ToggleButton>
                             </ToggleButtonGroup>
                             <div className="postContentContainer">
-                                {!selectedPlatform && <p>Word of the day </p>}
                                 {(selectedPlatform) &&
                                     (posts)
                                 }
