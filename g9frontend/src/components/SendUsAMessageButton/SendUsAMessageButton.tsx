@@ -45,6 +45,8 @@ const SendUsAMessageButtonComponent: React.FC = () => {
                         onChange={(e) => setMessageText(e.target.value)}
                         placeholder="Type your message here..."
                         className='textarea-input'
+                        style={{ resize: 'none', height: '120px'}} 
+
                     />
                     <div className="button-container">
                         <button onClick={closeAndSendMessage} className='textarea-button'>Send Message</button>

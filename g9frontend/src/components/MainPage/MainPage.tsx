@@ -9,6 +9,7 @@ import SearchBarComponent from "../SearchBar/SearchBar";
 import { CenterFocusStrong } from "@mui/icons-material";
 import MessageIcon from '@mui/icons-material/Message';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
+import GraphComponent from "../Graph/Graph";
 
 
 export const MainPage: React.FC = () => {
@@ -23,7 +24,9 @@ export const MainPage: React.FC = () => {
                 </div>
                 <div className="content">
                     <div className="leftContainer">
-                        {/*here will be the graph part*/}
+                    <div className="GraphContainer">
+                            <GraphComponent/>
+                        </div>
                     </div>
                     <div className="rightContainer">
                         <div className="searchBarContainer">
