@@ -155,7 +155,7 @@ const GraphComponent: React.FC = () => {
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
-            <Bar className='graph' data={userData} options={userData.options}></Bar>
+            <Bar data={userData} options={userData.options}></Bar>
         </div>
     );
 }
