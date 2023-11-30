@@ -155,6 +155,7 @@ const GraphComponent: React.FC = () => {
                     </ToggleButton>
                 </ToggleButtonGroup>
             </div>
+            <br></br>
             <Bar data={userData} options={userData.options}></Bar>
         </div>
     );
