@@ -9,7 +9,7 @@ import "./GraphStyle.css"
 Chart.register(...registerables)
 
 interface ChartData {
-    labels: string[];
+    labels: number[];
     datasets: {
         label: string;
         data: number[];
@@ -30,9 +30,9 @@ interface ChartData {
     };
 }
 
-const GraphComponent: React.FC = () => {
+const GraphComponent = (data: {theWord: string}) => {
     // FIXME: change this to true if you want an actual call to the backend
-    const useBackendData: boolean = false;
+    const useBackendData: boolean = true;
     const [dataPopulated, setDataPopulated] = useState<boolean>(false);
 
     const [userData, setUserData] = useState<ChartData>({
@@ -61,26 +61,43 @@ const GraphComponent: React.FC = () => {
         }
     });
 
-    const fetchData = useCallback(async (timePeriod: 'month' | 'year') => {
+    const fetchData = useCallback(async (timePeriod: 'month' | 'year', query: string) => {
+        let graph_data: any[] = [];
         try {
-            let data: any[] = [];
-
             if (useBackendData) {
-                let query = "cats";
-                const today = new Date();
-                // you need to add +1 to months, bc they start from 0... very dumb...
-                let start_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-                let end_date;
-                if (timePeriod === "month") {
-                    end_date = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
-                } else {
-                    end_date = `${today.getFullYear() - 1}-${today.getMonth() + 1}-${today.getDate()}`;
-                }
-                let apiUrl = `/interest-over-time?query=${query}&start_date=${start_date}&end_date=${end_date}`;
+                let apiUrl = `http://127.0.0.1:8000/interest-over-time?search=${query}&time=${timePeriod}`;
+                console.log(apiUrl);
 
                 try {
                     axios.get(apiUrl).then((response) => {
-                        data = response.data["interest"];
+                        graph_data = response.data["interest_over_time"];
+                        console.log(graph_data);
+                        const newData = {
+                            labels: graph_data,
+                            datasets: [{
+                                label: "Views",
+                                data: graph_data,
+                                backgroundColor: ["#dbdcb8", "#81d4fa", "#d7e3a4"],
+                                borderColor: ["#4d4d4d", "#4d4d4d", "#4d4d4d"], // Add black border color for each bar
+                                borderWidth: 3
+                            }],
+                            options: {
+                                scales: {
+                                    x: {
+                                        display: false, // hide x-axis labels
+                                    },
+                                    y: {
+                                        display: false, // hide y-axis labels
+                                    },
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    },
+                                },
+                            }
+                        };
+                        setUserData(newData);
                     }).catch((error) => {
                         console.error('Axios error when fetching data from backend for interest-over-time:', error);
                     });
@@ -89,39 +106,12 @@ const GraphComponent: React.FC = () => {
                 }
             } else {
                 if (timePeriod === 'month') {
-                    data = MonthGraphMockData;
+                    graph_data = MonthGraphMockData;
                 } else {
-                    data = YearGraphMockData;
+                    graph_data = YearGraphMockData;
                 }
             }
-
-            const newData = {
-                labels: data.map((data) => data.date),
-                datasets: [{
-                    label: "Views",
-                    data: data.map((data) => data.interest),
-                    backgroundColor: ["#dbdcb8", "#81d4fa", "#d7e3a4"],
-                    borderColor: ["#4d4d4d", "#4d4d4d", "#4d4d4d"], // Add black border color for each bar
-                    borderWidth: 3
-                }],
-                options: {
-                    scales: {
-                        x: {
-                            display: false, // hide x-axis labels
-                        },
-                        y: {
-                            display: false, // hide y-axis labels
-                        },
-                    },
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                }
-            };
-
-            setUserData(newData);
+            console.log("aici", graph_data);
         } catch (error) {
             console.error('Error fetching data from backend:', error);
             // Handle errors
@@ -129,15 +119,13 @@ const GraphComponent: React.FC = () => {
     }, [useBackendData]);
 
     const handleTimePeriodChange = async (value: 'month' | 'year') => {
-        await fetchData(value);
+        await fetchData(value, data.theWord);
     };
 
     useEffect(() => {
-        if (!dataPopulated) {
-            fetchData("month").then(); // initial value will be month because IDK
-            setDataPopulated(true);
-        }
-    }, [dataPopulated, fetchData]);
+        console.log("aici");
+        fetchData("month", data.theWord);
+    }, [fetchData, data]);
 
     return (
         <div className="chart-wrapper">
