@@ -4,7 +4,7 @@ import axios from 'axios';
 const DescriptionWord = (data: { theWord: string }) => {
     // FIXME: change this to true if you want an actual call to the backend
     const useBackendData: boolean = false;
-    const [descriptionText, setDescriptionText] = useState(""); // Replace with your desired text
+    const [descriptionText, setDescriptionText] = useState("Not available");
 
     const fetchData = useCallback(async (query: string) => {
         try {
@@ -28,7 +28,7 @@ const DescriptionWord = (data: { theWord: string }) => {
                 }
             );
         } else {
-            setDescriptionText(`mock description, search word is ${data.theWord}`);
+            setDescriptionText(`${descriptionText}`);
         }
     }, [fetchData, data, descriptionText, useBackendData]);
 

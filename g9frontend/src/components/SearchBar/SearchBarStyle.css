@@ -19,3 +19,12 @@
 .searchBar:focus {
     box-shadow: 0 0 8px #5e61ed !important; /* Add a subtle box shadow on focus */
 }
+
+.searchContainer {
+    display: flex;
+}
+
+.searchBtn {
+    position: absolute;
+    display: inline;
+}

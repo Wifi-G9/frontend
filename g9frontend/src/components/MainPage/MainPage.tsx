@@ -1,14 +1,13 @@
-import React, {useState} from "react";
+import React, {useState, useCallback} from "react";
+import axios from 'axios';
 import {
     Container,
     Button,
     ToggleButtonGroup,
-    IconButton,
 } from "@mui/material";
 import "./MainPageStyle.css";
 import SearchBarComponent from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
-import MessageIcon from '@mui/icons-material/Message';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
 import DescriptionWord from "../Description/Description";
 import InstagramComponent from "../GetInsta/GetInsta";
@@ -19,8 +18,24 @@ export const MainPage: React.FC = () => {
     const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
     const [posts, setPosts] = useState<React.CElement<any, any>>();
 
-    const [theWord, setSearchTerm] = useState('');
+    const [wordOfTheDay, setWordOfTheDay] = useState<string>('Search')
+    const [theWord, setSearchTerm] = useState('wordOfTheDay');
 
+    const fetchWordOfTheDay = useCallback(async () => {
+        try {
+            let apiUrl = `127.0.0.1:8000/wordOfTheDay`;
+            axios.get(apiUrl).then((response) => {
+                let word = response.data["response"];
+                setWordOfTheDay(word);
+            }).catch((error) => {
+                console.error('Axios error when fetching data from backend for interest-over-time:', error);
+            });
+        } catch (e) {
+            console.error('Error fetching data from backend:', e);
+        }
+    }, []);
+
+    fetchWordOfTheDay();
     const handleSearch = (searchTerm: string) => {
         console.log("User searched for:", theWord);
         setSearchTerm(searchTerm);
@@ -69,9 +84,7 @@ export const MainPage: React.FC = () => {
                     </div>
                     <div className="rightContainer">
                         <div className="searchBarContainer">
-                            <SearchBarComponent onSearch={handleSearch}/>
-                                    Searched component: {theWord}
-
+                            <SearchBarComponent wordOfTheDay={wordOfTheDay} onSearch={handleSearch}/>
                         </div>
                         <div className="toggleGroupContainer">
                             <ToggleButtonGroup
