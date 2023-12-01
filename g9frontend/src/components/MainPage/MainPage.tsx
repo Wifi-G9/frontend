@@ -23,12 +23,12 @@ export const MainPage: React.FC = () => {
 
     const fetchWordOfTheDay = useCallback(async () => {
         try {
-            let apiUrl = `127.0.0.1:8000/wordOfTheDay`;
+            let apiUrl = `http://127.0.0.1:8000/wordOfTheDay`;
             axios.get(apiUrl).then((response) => {
                 let word = response.data["response"];
                 setWordOfTheDay(word);
             }).catch((error) => {
-                console.error('Axios error when fetching data from backend for interest-over-time:', error);
+                console.error('Axios error when fetching data from backend for wordOfTheDay:', error);
             });
         } catch (e) {
             console.error('Error fetching data from backend:', e);
@@ -36,6 +36,7 @@ export const MainPage: React.FC = () => {
     }, []);
 
     fetchWordOfTheDay();
+
     const handleSearch = (searchTerm: string) => {
         console.log("User searched for:", theWord);
         setSearchTerm(searchTerm);
@@ -43,9 +44,6 @@ export const MainPage: React.FC = () => {
 
     const handleSelect = (selectedButton: string): void => {
         setSelectedPlatform(selectedButton);
-
-        // FIXME: hack to set the word before the searched word PR is merged
-        setSearchTerm("cats");
 
         if (selectedButton === "instagram") {
             if (theWord === null) {
@@ -78,7 +76,7 @@ export const MainPage: React.FC = () => {
                 <div className="content">
                     <div className="leftContainer">
                         <div className="GraphContainer">
-                            <GraphComponent/>
+                            <GraphComponent theWord={theWord}/>
                             <DescriptionWord theWord={theWord}/>
                         </div>
                     </div>

@@ -3,18 +3,19 @@ import axios from 'axios';
 
 const DescriptionWord = (data: { theWord: string }) => {
     // FIXME: change this to true if you want an actual call to the backend
-    const useBackendData: boolean = false;
+    const useBackendData: boolean = true;
     const [descriptionText, setDescriptionText] = useState("Not available");
 
     const fetchData = useCallback(async (query: string) => {
         try {
-            let apiUrl = `/describe?message=${query}`;
-
+            let apiUrl = `http://127.0.0.1:8000/describe?message=${query}`;
+            console.log(apiUrl, query);
             axios.get(apiUrl).then((response) => {
                 let description = response.data["response"];
+                console.log(description);
                 setDescriptionText(description);
             }).catch((error) => {
-                console.error('Axios error when fetching data from backend for interest-over-time:', error);
+                console.error('Axios error when fetching data from backend for description:', error);
             });
         } catch (e) {
             console.error('Error fetching data from backend:', e);
