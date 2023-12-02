@@ -73,23 +73,21 @@ const mocPosts: Post[] = [
 
 const InstagramComponent: React.FC<{ query: string }> = ({query}) => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const debug = true; // change this to false when you want this component to return real data
+    const debug = false; // change this to false when you want this component to return real data
 
     useEffect(() => {
         if (debug) {
             setPosts(mocPosts);
         } else {
-            let apiUrl = `/search-instagram?query=${query}`;
+            let apiUrl = `http://127.0.0.1:8000/search-instagram?query=${query}`;
 
             if (apiUrl) {
-                axios
-                    .get(apiUrl)
-                    .then((response) => {
-                        setPosts(response.data['posts-list']);
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching posts:', error);
-                    });
+                axios.get(apiUrl).then((response) => {
+                    console.log(response);
+                    setPosts(response.data['posts-list']);
+                }).catch((error) => {
+                    console.error('Error fetching posts:', error);
+                });
             }
         }
     }, [debug, query]);

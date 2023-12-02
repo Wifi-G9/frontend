@@ -18,10 +18,10 @@ const SearchBarComponent: React.FC<SearchBarProps> = ({wordOfTheDay, onSearch}) 
     const sendWord = useCallback(async (query: string) => {
         try {
             let apiUrl = `http://127.0.0.1:8000/search?query=${query}`;
-            axios.get(apiUrl).then(() => {
-            }).catch((error) => {
-                console.error('Axios error when fetching data from backend for interest-over-time:', error);
-            });
+            // axios.get(apiUrl).then(() => {
+            // }).catch((error) => {
+            //     console.error('Axios error when fetching data from backend for interest-over-time:', error);
+            // });
         } catch (e) {
             console.error('Error fetching data from backend:', e);
         }

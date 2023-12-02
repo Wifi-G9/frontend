@@ -23,13 +23,13 @@ export const MainPage: React.FC = () => {
 
     const fetchWordOfTheDay = useCallback(async () => {
         try {
-            let apiUrl = `http://127.0.0.1:8000/wordOfTheDay`;
-            axios.get(apiUrl).then((response) => {
-                let word = response.data["response"];
-                setWordOfTheDay(word);
-            }).catch((error) => {
-                console.error('Axios error when fetching data from backend for wordOfTheDay:', error);
-            });
+            // let apiUrl = `http://127.0.0.1:8000/wordOfTheDay`;
+            // axios.get(apiUrl).then((response) => {
+            //     let word = response.data["response"];
+            //     setWordOfTheDay(word);
+            // }).catch((error) => {
+            //     console.error('Axios error when fetching data from backend for wordOfTheDay:', error);
+            // });
         } catch (e) {
             console.error('Error fetching data from backend:', e);
         }
