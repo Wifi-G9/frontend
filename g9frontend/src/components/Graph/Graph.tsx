@@ -66,17 +66,15 @@ const GraphComponent = (data: {theWord: string}) => {
         try {
             if (useBackendData) {
                 let apiUrl = `http://127.0.0.1:8000/interest-over-time?search=${query}&time=${timePeriod}`;
-                console.log(apiUrl);
 
                 try {
                     axios.get(apiUrl).then((response) => {
                         graph_data = response.data["interest_over_time"];
-                        console.log(graph_data);
                         const newData = {
-                            labels: graph_data,
+                            labels: graph_data.map((data) => data.date),
                             datasets: [{
-                                label: "Views",
-                                data: graph_data,
+                                label: "Interest",
+                                data: graph_data.map((data) => data.interest),
                                 backgroundColor: ["#dbdcb8", "#81d4fa", "#d7e3a4"],
                                 borderColor: ["#4d4d4d", "#4d4d4d", "#4d4d4d"], // Add black border color for each bar
                                 borderWidth: 3
@@ -111,7 +109,6 @@ const GraphComponent = (data: {theWord: string}) => {
                     graph_data = YearGraphMockData;
                 }
             }
-            console.log("aici", graph_data);
         } catch (error) {
             console.error('Error fetching data from backend:', error);
             // Handle errors
@@ -123,7 +120,6 @@ const GraphComponent = (data: {theWord: string}) => {
     };
 
     useEffect(() => {
-        console.log("aici");
         fetchData("month", data.theWord);
     }, [fetchData, data]);
 
