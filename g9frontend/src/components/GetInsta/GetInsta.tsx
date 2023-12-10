@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
 import React from 'react'
 import './GetInstaStyle.css'
@@ -71,26 +71,29 @@ const mocPosts: Post[] = [
     }
 ];
 
-const InstagramComponent: React.FC<{ query: string }> = ({query}) => {
+const InstagramComponent = (data: {query: string}) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const debug = false; // change this to false when you want this component to return real data
+
+    const fetchData = useCallback(async () => {
+        try {
+            let apiUrl = `http://127.0.0.1:8000/search-instagram?query=${data.query}`;
+            const response = await axios.get(apiUrl);
+            console.log(response);
+            console.log("aici fa:", response.data['posts-list']);
+            setPosts(response.data['posts-list']);
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+        }
+    }, [data.query]);
 
     useEffect(() => {
         if (debug) {
             setPosts(mocPosts);
-        } else {
-            let apiUrl = `http://127.0.0.1:8000/search-instagram?query=${query}`;
-
-            if (apiUrl) {
-                axios.get(apiUrl).then((response) => {
-                    console.log(response);
-                    setPosts(response.data['posts-list']);
-                }).catch((error) => {
-                    console.error('Error fetching posts:', error);
-                });
-            }
+        } else if (data.query !== "") {
+            fetchData();
         }
-    }, [debug, query]);
+    }, []);
 
     return (
         <div className="instagram-container">

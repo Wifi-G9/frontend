@@ -11,7 +11,6 @@ interface ToggleButtonProps {
 const ToggleButton: React.FC<ToggleButtonProps> = ({
                                                        className,
                                                        value,
-                                                       isSelected,
                                                        onSelect,
                                                        children,
                                                    }) => {
