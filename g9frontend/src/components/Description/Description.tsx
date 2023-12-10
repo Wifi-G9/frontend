@@ -6,6 +6,10 @@ const DescriptionWord = (data: { theWord: string }) => {
 
     const fetchData = useCallback((query: string): void => {
         try {
+            if (query == "") {
+                setDescriptionText("No description");
+                return;
+            }
             let apiUrl: string = `http://127.0.0.1:8000/describe?message=${query}`;
             let description: string = "";
             axios.get(apiUrl)

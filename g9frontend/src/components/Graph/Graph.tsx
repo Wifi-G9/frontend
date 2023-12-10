@@ -62,6 +62,9 @@ const GraphComponent = (data: {theWord: string}) => {
     });
 
     const fetchData = useCallback(async (timePeriod: 'month' | 'year', query: string) => {
+        if (query == "") {
+            return;
+        }
         let graph_data: any[] = [];
         try {
             if (useBackendData) {

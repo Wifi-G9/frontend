@@ -2,7 +2,7 @@ import './App.css';
 import './pages/MainPage/MainPageStyle.css'
 import {MainPage} from "./pages/MainPage/MainPage";
 
-import {BrowserRouter, Routes, Router, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {UserPage} from "./pages/UserPage/UserPage";
 import LoginPage from "./components/Login/Login";
 import RegisterPage from "./components/Register/Register";
