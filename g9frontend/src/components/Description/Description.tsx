@@ -6,7 +6,7 @@ const DescriptionWord = (data: { theWord: string }) => {
 
     const fetchData = useCallback((query: string): void => {
         try {
-            if (query == "") {
+            if (query === "") {
                 setDescriptionText("No description");
                 return;
             }
@@ -16,7 +16,6 @@ const DescriptionWord = (data: { theWord: string }) => {
                 .then((response) => {
                     description = response.data["response"];
                     setDescriptionText(description);
-                    console.log(description);
                 }).catch((error) => {
                 console.error('Axios error when fetching data from backend for description:', error);
             });
