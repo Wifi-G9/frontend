@@ -1,4 +1,4 @@
-import React, {ReactNode, useState} from 'react';
+import React from 'react';
 import './App.css';
 import './components/MainPage/MainPageStyle.css'
 import {MainPage} from "./components/MainPage/MainPage";

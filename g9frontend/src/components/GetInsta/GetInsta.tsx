@@ -71,7 +71,7 @@ const mocPosts: Post[] = [
     }
 ];
 
-const InstagramComponent = (data: {query: string}) => {
+const InstagramComponent = (data: { query: string }) => {
     const [posts, setPosts] = useState<Post[]>([]);
     const debug = false; // change this to false when you want this component to return real data
 
@@ -79,8 +79,6 @@ const InstagramComponent = (data: {query: string}) => {
         try {
             let apiUrl = `http://127.0.0.1:8000/search-instagram?query=${data.query}`;
             const response = await axios.get(apiUrl);
-            console.log(response);
-            console.log("aici fa:", response.data['posts-list']);
             setPosts(response.data['posts-list']);
         } catch (error) {
             console.error('Error fetching posts:', error);
@@ -93,7 +91,7 @@ const InstagramComponent = (data: {query: string}) => {
         } else if (data.query !== "") {
             fetchData();
         }
-    }, []);
+    }, [data.query, debug, fetchData]);
 
     return (
         <div className="instagram-container">

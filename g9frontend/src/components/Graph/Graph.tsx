@@ -33,7 +33,7 @@ interface ChartData {
 const GraphComponent = (data: {theWord: string}) => {
     // FIXME: change this to true if you want an actual call to the backend
     const useBackendData: boolean = true;
-    const [dataPopulated, setDataPopulated] = useState<boolean>(false);
+    // const [dataPopulated, setDataPopulated] = useState<boolean>(false);
 
     const [userData, setUserData] = useState<ChartData>({
         labels: [],
@@ -62,7 +62,7 @@ const GraphComponent = (data: {theWord: string}) => {
     });
 
     const fetchData = useCallback(async (timePeriod: 'month' | 'year', query: string) => {
-        if (query == "") {
+        if (query === "") {
             return;
         }
         let graph_data: any[] = [];
