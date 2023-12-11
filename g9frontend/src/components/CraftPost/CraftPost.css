@@ -1,0 +1,40 @@
+
+.Siuuu{
+    display: grid;
+    place-items: center;
+}
+.CR7{
+    display: grid;
+    place-items: flex-start;
+}
+.inside_items{
+    display: grid;
+    place-items: center;
+}
+input[type="text"] {
+    width: 700px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ececec;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+}
+
+input[type="text"]:read-only {
+    background-color: #f0f0f0;
+}
+.container_craft {
+    width: 680px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ececec;
+}
+.poza_nu_ma_mai_ma_pune_pe_front_end{
+    width: 250px;
+    height: 135px;
+}
