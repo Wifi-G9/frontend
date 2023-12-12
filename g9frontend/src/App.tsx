@@ -1,9 +1,8 @@
-import React, {ReactNode, useState} from 'react';
 import './App.css';
 import './components/MainPage/MainPageStyle.css'
 import {MainPage} from "./components/MainPage/MainPage";
 
-import {BrowserRouter, Routes, Router, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 
 function App() {
