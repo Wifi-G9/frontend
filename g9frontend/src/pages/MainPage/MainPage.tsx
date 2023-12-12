@@ -6,12 +6,12 @@ import {
     ToggleButtonGroup,
 } from "@mui/material";
 import "./MainPageStyle.css";
-import SearchBarComponent from "../SearchBar/SearchBar";
-import ToggleButton from "../ToggleButton/ToggleButton";
-import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
-import DescriptionWord from "../Description/Description";
-import InstagramComponent from "../GetInsta/GetInsta";
-import GraphComponent from "../Graph/Graph";
+import SearchBarComponent from "../../components/SearchBar/SearchBar";
+import ToggleButton from "../../components/ToggleButton/ToggleButton";
+import SendUsAMessageButtonComponent from "../../components/SendUsAMessageButton/SendUsAMessageButton";
+import DescriptionWord from "../../components/Description/Description";
+import InstagramComponent from "../../components/GetInsta/GetInsta";
+import GraphComponent from "../../components/Graph/Graph";
 
 
 export const MainPage: React.FC = () => {

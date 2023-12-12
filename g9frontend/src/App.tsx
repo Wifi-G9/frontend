@@ -1,6 +1,6 @@
 import './App.css';
-import './components/MainPage/MainPageStyle.css'
-import {MainPage} from "./components/MainPage/MainPage";
+import './pages/MainPage/MainPageStyle.css'
+import {MainPage} from "./pages/MainPage/MainPage";
 
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
