@@ -10,29 +10,17 @@ const RegisterPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [instagram, setInstagram] = useState('');
-    const [facebook, setFacebook] = useState('');
-    const [twitter, setTwitter] = useState('');
+    const [verify_password, setVerifyPassword] = useState('');
 
     const handleRegister = () => {
-        const userData = {
-            username,
-            email,
-            password,
-            instagram,
-            facebook,
-            twitter
-        };
 
-        axios.post('/sign-up', userData)
-            .then((response) => {
+        axios.post('http://127.0.0.1:8000/signup?email=${email}&username=${username}&password=${password}&verify_password=${verify_password}')
+              .then((response) => {
                 console.log('Registration successful');
                 setUsername('');
                 setEmail('');
                 setPassword('');
-                setInstagram('');
-                setFacebook('');
-                setTwitter('');
+                setVerifyPassword('');
 
                 <Navigate to={"/"} replace={true} />
             })
@@ -46,15 +34,15 @@ const RegisterPage: React.FC = () => {
     return (
         <div className="register-container">
             <div className="top-bar">
-                <div className="left-section">Wi-Fi</div>
-                <Button component={Link} to="/login"  style={{
+                <div className="left-section">WiFi</div>
+                <Button component={Link} to="/"  style={{
                     textTransform: 'none',
                     color: '#f7fefe',
                     right: '3%',
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '16px'
                 }}>
-                    Log in
+                    Main Page
                 </Button>
             </div>
             <div className="register-form">
@@ -79,23 +67,12 @@ const RegisterPage: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <input
-                        type="text"
-                        placeholder="Instagram"
-                        value={instagram}
-                        onChange={(e) => setInstagram(e.target.value)}
+                        type="password"
+                        placeholder="Verify-Password"
+                        value={verify_password}
+                        onChange={(e) => setVerifyPassword(e.target.value)}
                     />
-                    <input
-                        type="text"
-                        placeholder="Facebook"
-                        value={facebook}
-                        onChange={(e) => setFacebook(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="X"
-                        value={twitter}
-                        onChange={(e) => setTwitter(e.target.value)}
-                    />
+
                 </div>
                 <button type="submit" onClick={handleRegister}>Register</button>
                 <div className= "go-to-login">

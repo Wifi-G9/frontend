@@ -11,13 +11,9 @@ const LoginPage: React.FC = () => {
     const [password, setPassword] = React.useState('');
 
     const handleLogin = () => {
-        const userData = {
-            username,
-            password,
 
-        };
+        axios.post(`http://127.0.0.1:8000/login?email=${username}&password=${password}`)
 
-        axios.post('/log-in', userData)
             .then((response) => {
                 console.log('Login successful');
                 setUsername('');
@@ -33,15 +29,15 @@ const LoginPage: React.FC = () => {
     return (
         <div className="login-container">
             <div className="top-bar">
-                <div className="left-section">Wi-fi</div>
-                    <Button style={{
+                <div className="left-section">WiFi</div>
+                    <Button component={Link} to="/" style={{
                         textTransform: 'none',
                         color: '#f7fefe',
                         right: '3%',
                         fontFamily: 'Inter, sans-serif',
                         fontSize: '16px'
-                    }}>
-                        Log in
+                    }} >
+                        Main Page
                     </Button>
 
             </div>

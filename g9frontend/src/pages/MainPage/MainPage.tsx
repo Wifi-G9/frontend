@@ -65,7 +65,7 @@ export const MainPage: React.FC = () => {
             <div className="container">
                 <div className="header">
                     <p className="logo">WiFi</p>
-                    <Button style={{
+                    <Button component={Link} to="/login" style={{
                         textTransform: 'none',
                         color: '#f7fefe',
                         right: '3%',
