@@ -1,0 +1,64 @@
+.graphStyle{
+    width: 350pt;
+}
+
+.graphContainer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.graphTextLine{
+    margin-top: 10px;
+    text-align: center;
+    font-family: "sans-serif";
+}
+
+.textContainer{
+    width: 400px;
+    margin-left: 20px;
+    text-align: center;
+    font-family: "sans-serif";
+    vertical-align:middle;
+}
+
+.firstLineText{
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 5px;
+}
+
+.secondLineText{
+    font-weight: 600;
+    font-size: 84px;
+    line-height: 10px;
+}
+
+.thirdLineText {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 5px;
+}
+
+.textTopic{
+    margin-top: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    font-family: "sans-serif";
+    font-size: 30px;
+}
+
+.squareContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .square {
+    width: 30%;
+    height: 300px;
+    margin-right: 25px;
+    margin-left: 25px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+  }
