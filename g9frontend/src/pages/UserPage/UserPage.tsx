@@ -4,10 +4,12 @@ import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import SendUsAMessageButtonComponent from "../../components/SendUsAMessageButton/SendUsAMessageButton";
 import {useParams} from "react-router-dom";
 import "./UserPageStyle.css";
-
+import {Link} from "react-router-dom";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import HomeIcon from '@mui/icons-material/Home';
 
 export const UserPage: React.FC = () => {
-    const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
+    const [selectedPlatform, setSelectedPlatform] = useState<string>("Instagram");
     const {username} = useParams();
 
     const styles = {
@@ -40,19 +42,22 @@ export const UserPage: React.FC = () => {
                         right: '3%',
                         fontFamily: 'Inter, sans-serif',
                         fontSize: '20px'
-                    }}>
-                        Log in
+                    }} to="/" component={Link} color="inherit" sx={{mr: 5}}>
+                        <HomeIcon sx={{mr: 1}}/>
+                        Home Page
                     </Button>
                 </div>
                 <div className="content">
                     <div className="leftContainer">
-                        <div className="welcomeText">
-                            Welcome {username}!
-                        </div>
                         <div className="centeredContainer">
-                            <Button className="blueButton" style={styles.blueButton}>
-                                Craft your post
-                            </Button>
+                            <div className="welcomeText">
+                                Welcome {username}!
+                            </div>
+                            <div>
+                                <Button className="blueButton" style={styles.blueButton}>
+                                    Craft your post
+                                </Button>
+                            </div>
                         </div>
                     </div>
                     <div className="rightContainer">
