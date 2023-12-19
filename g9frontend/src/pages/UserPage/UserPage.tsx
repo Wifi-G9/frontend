@@ -5,7 +5,6 @@ import SendUsAMessageButtonComponent from "../../components/SendUsAMessageButton
 import {useParams} from "react-router-dom";
 import "./UserPageStyle.css";
 import {Link} from "react-router-dom";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import HomeIcon from '@mui/icons-material/Home';
 
 export const UserPage: React.FC = () => {
