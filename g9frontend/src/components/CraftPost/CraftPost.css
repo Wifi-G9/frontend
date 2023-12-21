@@ -28,7 +28,7 @@ input[type="text"]:read-only {
 }
 .container_craft {
     width: 680px;
-    height: 200px;
+    height: 265px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -37,4 +37,26 @@ input[type="text"]:read-only {
 .poza_nu_ma_mai_ma_pune_pe_front_end{
     width: 250px;
     height: 135px;
+}
+input[name="description_info"] {
+    width: 100%;
+    padding: 10px;
+    margin: 30px 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Lighter gray border */
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333; /* Text color */
+}
+
+/* Placeholder style */
+input[name="description_info"]::placeholder {
+    color: #999; /* Lighter gray placeholder text */
+}
+
+/* Optional: Style for better visual focus */
+input[name="description_info"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
