@@ -14,7 +14,7 @@ const RegisterPage: React.FC = () => {
 
     const handleRegister = () => {
 
-        axios.post('http://127.0.0.1:8000/signup?email=${email}&username=${username}&password=${password}&verify_password=${verify_password}')
+        axios.post(`http://127.0.0.1:8000/signup?email=${email}&username=${username}&password=${password}&verify_password=${verify_password}`)
               .then((response) => {
                 console.log('Registration successful');
                 setUsername('');

@@ -12,6 +12,7 @@ import SendUsAMessageButtonComponent from "../../components/SendUsAMessageButton
 import DescriptionWord from "../../components/Description/Description";
 import InstagramComponent from "../../components/GetInsta/GetInsta";
 import GraphComponent from "../../components/Graph/Graph";
+import {Link} from "react-router-dom";
 
 
 export const MainPage: React.FC = () => {
