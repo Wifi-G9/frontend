@@ -12,3 +12,4 @@ const getCookie = (name: string): string | undefined | null => {
 };
 
 export {setCookie, getCookie}
+
