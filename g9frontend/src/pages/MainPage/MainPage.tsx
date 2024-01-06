@@ -46,7 +46,7 @@ export const MainPage: React.FC = () => {
         setSelectedPlatform(selectedButton);
 
         // FIXME: hack to set the word before the searched word PR is merged
-        setSearchTerm("cats");
+        // setSearchTerm("cats");
 
         if (selectedButton === "instagram") {
             if (theWord === null) {
@@ -77,17 +77,17 @@ export const MainPage: React.FC = () => {
                     </Button>
                 </div>
                 <div className="content">
-                    <div className="leftContainer">
+                    <div className="mainPageLeftContainer">
                         <div className="GraphContainer">
                             <GraphComponent/>
                             <DescriptionWord theWord={theWord}/>
                         </div>
                     </div>
-                    <div className="rightContainer">
+                    <div className="mainPageRightContainer">
                         <div className="searchBarContainer">
                             <SearchBarComponent wordOfTheDay={wordOfTheDay} onSearch={handleSearch}/>
                         </div>
-                        <div className="toggleGroupContainer">
+                        <div className="mainPageToggleGroupContainer">
                             <ToggleButtonGroup
                                 style={{backgroundColor: '#e9e9e9', fontFamily: 'Inter, sans-serif', width: '100%'}}
                                 color="primary"
@@ -103,7 +103,7 @@ export const MainPage: React.FC = () => {
                                 <ToggleButton className="toggleButton" value='X' isSelected={selectedPlatform === "x"}
                                               onSelect={() => handleSelect("x")}>X</ToggleButton>
                             </ToggleButtonGroup>
-                            <div className="postContentContainer">
+                            <div className="mainPagePostContentContainer">
                                 {(selectedPlatform) &&
                                     (posts)
                                 }

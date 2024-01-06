@@ -2,7 +2,6 @@
 
 .instagram-container {
     max-width: 800px;
-    max-height: 440px;
     margin: 0 auto;
     padding: 20px;
     /* background-color: #f2f2f2; */
@@ -11,6 +10,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow-y: auto; /* Add this line to enable vertical scrollbar when needed */
+    height: 92%;
 }
 
 .instagram-post {

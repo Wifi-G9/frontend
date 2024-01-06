@@ -37,7 +37,7 @@ html, body {
     font-size:x-large;
 }
 
-.rightContainer {
+.mainPageRightContainer {
     display: flex;
     flex-grow: 1;
     align-items: flex-start;
@@ -54,7 +54,7 @@ html, body {
     min-height: 0;
 }
 
-.leftContainer {
+.mainPageLeftContainer {
     background-color: #a6c8c9;
     margin-right: 8px;
     width: 33%;
@@ -68,12 +68,13 @@ html, body {
     transform: translateX(-50%);
 }
 
-.toggleGroupContainer {
+.mainPageToggleGroupContainer {
     position: absolute;
     top: 18%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
+    height: 82%;
 }
 
 /* For React components, you have to specify !important so that the style is registered */
@@ -99,10 +100,10 @@ html, body {
     border-bottom-color: #5e61ed !important;
 }
 
-.postContentContainer {
+.mainPagePostContentContainer {
     background-color: #e9e9e9;
     padding: 15px;
-    height: 470px;
+    height: 88%;
 }
 
 .squareInstagram {

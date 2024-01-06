@@ -1,41 +1,52 @@
 // RegisterPage.tsx
-import React, { useState } from 'react';
-import { Link,Navigate} from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import './Register.css';
 import {Button} from "@mui/material";
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
-import axios from "axios";
+import {setCookie} from "../CookieManager/CookieManager";
 
 const RegisterPage: React.FC = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [verify_password, setVerifyPassword] = useState('');
 
     const handleRegister = () => {
-
-        axios.post(`http://127.0.0.1:8000/signup?email=${email}&username=${username}&password=${password}&verify_password=${verify_password}`)
-              .then((response) => {
+        fetch('http://127.0.0.1:8000/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                username: username,
+                password: password,
+                verify_password: verify_password,
+            }),
+        }).then(async (response) => {
+            if (response.ok) {
                 console.log('Registration successful');
-                setUsername('');
-                setEmail('');
-                setPassword('');
-                setVerifyPassword('');
+                setCookie("wifiapp-username", username, 7);
+                setCookie("wifiapp-email", email, 7);
+            } else {
+                console.error("Registration failed");
+            }
 
-                <Navigate to={"/"} replace={true} />
-            })
-            .catch((error) => {
-                console.error('Error registering user:', error);
-            });
+            console.log(await response.json())
+            navigate("/");
+        }).catch((error) => {
+            console.error('Error registering user:', error);
+        });
     };
-
 
 
     return (
         <div className="register-container">
             <div className="top-bar">
                 <div className="left-section">WiFi</div>
-                <Button component={Link} to="/"  style={{
+                <Button component={Link} to="/" style={{
                     textTransform: 'none',
                     color: '#f7fefe',
                     right: '3%',
@@ -75,9 +86,9 @@ const RegisterPage: React.FC = () => {
 
                 </div>
                 <button type="submit" onClick={handleRegister}>Register</button>
-                <div className= "go-to-login">
+                <div className="go-to-login">
                     You already have an account?
-                    <Link to="/login" > Login now </Link>
+                    <Link to="/login"> Login now </Link>
                 </div>
             </div>
             <SendUsAMessageButtonComponent/>
