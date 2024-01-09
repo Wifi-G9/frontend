@@ -1,0 +1,36 @@
+.SimilarTrends {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    width: fit-content;
+    /*padding: 20px;*/
+    margin-top: 0;
+    margin-left: 20px;
+}
+
+.SimilarTrends_h2 {
+    margin-bottom: 0px;
+    width: 100%;
+}
+
+/*.Similar_li_before {*/
+/*    background-color: #a6c8c9;*/
+
+/*    margin-right: 20px; !* Adjust the margin as needed *!*/
+/*    display: inline-block;*/
+/*    width: auto; !* Set width to auto to allow content to determine width *!*/
+/*    margin-left: -1em;*/
+/*    border: 1px solid #333; !* Add a border *!*/
+/*    border-radius: 10px; !* Adjust the border-radius value for rounded corners *!*/
+
+/*}*/
+
+.Similar_li_before {
+    background-color: #a6c8c9;
+    margin-right: 20px;
+    display: inline-flex; /* Use flexbox */
+    align-items: center; /* Center the content vertically */
+    padding: 15px; /* Increase padding for a larger box */
+    border: 1px solid #333;
+    border-radius: 10px;
+}

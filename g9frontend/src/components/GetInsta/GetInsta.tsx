@@ -79,6 +79,7 @@ const InstagramComponent: React.FC<{ query: string }> = ({query}) => {
         if (debug) {
             setPosts(mocPosts);
         } else {
+
             let apiUrl = `/search-instagram?query=${query}`;
 
             if (apiUrl) {
