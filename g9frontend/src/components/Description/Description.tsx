@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import axios from 'axios';
-
+import "./DescriptionStyle.css"
 const DescriptionWord = (data: { theWord: string }) => {
     // FIXME: change this to true if you want an actual call to the backend
     const useBackendData: boolean = false;
@@ -33,7 +33,7 @@ const DescriptionWord = (data: { theWord: string }) => {
     }, [fetchData, data, descriptionText, useBackendData]);
 
     return (
-        <div>
+        <div className="Description">
             <h2>Description</h2>
             <p>{descriptionText}</p>
         </div>
