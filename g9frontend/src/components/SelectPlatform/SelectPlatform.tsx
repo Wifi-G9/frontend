@@ -5,7 +5,7 @@ import InstagramComponent from "../GetInsta/GetInsta";
 
 const SelectPlatform = (data: {theWord: string}) => {
     const [selectedPlatform, setSelectedPlatform] = useState<string | null>(null);
-    console.log("stupid")
+
     return (
         <div className="toggleGroupContainer">
             <ToggleButtonGroup
