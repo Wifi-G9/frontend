@@ -123,7 +123,7 @@ const GraphComponent = (data: {theWord: string}) => {
     };
 
     useEffect(() => {
-        fetchData("month", data.theWord);
+        // fetchData("month", data.theWord);
     }, [fetchData, data]);
 
     return (
