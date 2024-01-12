@@ -100,7 +100,7 @@ export const MainPage: React.FC = () => {
 				<div className="content">
 					<div className="mainPageLeftContainer">
 						<div className="GraphContainer">
-							<GraphComponent/>
+							<GraphComponent theWord={theWord}/>
 							<DescriptionWord theWord={theWord}/>
 							<PopularTrends/>
 						</div>
