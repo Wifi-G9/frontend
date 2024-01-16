@@ -36,15 +36,16 @@ const mocTrends: Trend[] = [
 
 const SimilarTrends = (data: {theWord: string})=> {
     const [trends, setTrends] = useState<Trend[]>([]);
-    const useBackendData: boolean = false;
+    const useBackendData: boolean = true;
 
     const fetchData = useCallback(async (query: string) => {
         try {
 
-            let apiUrl = `/similar-trends?count=${query}`;
+            let apiUrl = `http://127.0.0.1:8000/similar-trends?search=${query}`;
 
             axios.get(apiUrl).then((response) => {
-                let trends = response.data["response"];
+                let trends = response.data["similar_trends"];
+                // console.log(trends);
                 setTrends(trends);
             }).catch((error) => {
                 console.error('Axios error when fetching data from backend for interest-over-time:', error);
@@ -57,13 +58,13 @@ const SimilarTrends = (data: {theWord: string})=> {
     useEffect(() => {
         if (useBackendData) {
             fetchData(data.theWord).then(() => {
-                    console.log(trends);
+                    // console.log(trends);
                 }
             );
         } else {
             setTrends(mocTrends);
         }
-    }, [fetchData, data, trends, useBackendData]);
+    }, [fetchData, data, useBackendData]);
 
 
     return (

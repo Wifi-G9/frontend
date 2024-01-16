@@ -59,7 +59,6 @@ html, body {
     margin-right: 8px;
     width: 33%;
     white-space: pre-line;
-    height: 780px;
 }
 
 .searchBarContainer {
@@ -71,7 +70,7 @@ html, body {
 
 .mainPageToggleGroupContainer {
     position: absolute;
-    top: 10%;
+    top: 18%;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;

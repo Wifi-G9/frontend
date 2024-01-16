@@ -36,14 +36,16 @@ const mocTrends: Trend[] = [
 const PopularTrends: React.FC = ()=> {
     const [trends, setTrends] = useState<Trend[]>([]);
     const useBackendData: boolean = false;
+    const [trendsReceived, setTrendsReceived] = useState<boolean>(false);
 
     const fetchData = useCallback(async (number: number) => {
         try {
 
-            let apiUrl = `/popular-trends?count=${number}`;
+            let apiUrl = `http://127.0.0.1:8000/popular-trends?count=${number}`;
 
             axios.get(apiUrl).then((response) => {
-                let trends = response.data["response"];
+                let trends = response.data["popular_trends"];
+                console.log(trends);
                 setTrends(trends);
             }).catch((error) => {
                 console.error('Axios error when fetching data from backend for interest-over-time:', error);
@@ -55,14 +57,16 @@ const PopularTrends: React.FC = ()=> {
 
     useEffect(() => {
         if (useBackendData) {
-            fetchData(5).then(() => {
+            if (!trendsReceived) {
+                fetchData(5).then(() => {
                     console.log(trends);
-                }
-            );
+                });
+                setTrendsReceived(true);
+            }
         } else {
             setTrends(mocTrends);
         }
-    }, [fetchData, trends, useBackendData]);
+    }, [fetchData, trends, useBackendData, trendsReceived]);
 
 
     return (

@@ -12,6 +12,7 @@ import SendUsAMessageButtonComponent from "../../components/SendUsAMessageButton
 import DescriptionWord from "../../components/Description/Description";
 import InstagramComponent from "../../components/GetInsta/GetInsta";
 import GraphComponent from "../../components/Graph/Graph";
+import PopularTrends from "../../components/PopularTrends/PopularTrends";
 import {Link, useNavigate} from "react-router-dom";
 import {getCookie} from "../../components/CookieManager/CookieManager"
 
@@ -101,6 +102,7 @@ export const MainPage: React.FC = () => {
 						<div className="GraphContainer">
 							<GraphComponent/>
 							<DescriptionWord theWord={theWord}/>
+							<PopularTrends/>
 						</div>
 					</div>
 					<div className="mainPageRightContainer">
