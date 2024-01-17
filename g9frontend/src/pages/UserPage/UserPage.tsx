@@ -143,7 +143,7 @@ export const UserPage: React.FC = () => {
 							Welcome {username}!
 						</div>
 						<div>
-							<Button className="blueButton" style={styles.blueButton}>
+							<Button component={Link} to={`/${username}/craft-post`} className="blueButton" style={styles.blueButton}>
 								Craft your post
 							</Button>
 						</div>

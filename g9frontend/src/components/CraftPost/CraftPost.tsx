@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useEffect, ChangeEvent} from "react";
+import React, {useState, useRef, useEffect, ChangeEvent} from "react";
 import axios from 'axios';
 import {useNavigate, useParams} from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
@@ -7,13 +7,12 @@ import {
     Button,
 } from "@mui/material";
 import "./CraftPost.css";
-import AccessibleForwardIcon from '@mui/icons-material/AccessibleForward';
+import PersonIcon from '@mui/icons-material/Person';
 import SendUsAMessageButtonComponent from "../SendUsAMessageButton/SendUsAMessageButton";
-
 
 export const CraftPost: React.FC = () => {
     let navigate = useNavigate();
-    const inputRef = useRef<HTMLInputElement | null>(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
     const [image, setImage] = useState<string | null>(null);
     const [isButtonVisible, setIsButtonVisible] = useState(true);
     const {username} = useParams();
@@ -21,8 +20,7 @@ export const CraftPost: React.FC = () => {
     const [craftSong, setSong] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const routeChange = () => {
-        // TODO: Add user profile path
-        let path = `/profile`;
+        let path = `/${username}`;
         navigate(path);
     }
 
@@ -59,76 +57,34 @@ export const CraftPost: React.FC = () => {
 
 
     const handleCraftButtonClick = async () => {
-    //     if (image) {
-    //         const isBase64 = /^data:image\/[a-zA-Z]*;base64,/.test(image);
-    //         // alert(isBase64)
-    //         if (isBase64) {
-    //             try {
-    //                 const response = await axios.post(`/${username}/describe-photo`, { photo: image }, {
-    //                     headers: {
-    //                         'Content-Type': 'application/json',
-    //                     },
-    //                 });
-    //                 craftDescription = response.data;
-    //                 console.log(response.data.description);
-    //
-    //                 try {
-    //                     const response = await axios.post(`/${username}/description-deezer`, { description: craftDescription }, {
-    //                         headers: {
-    //                             'Content-Type': 'application/json',
-    //                         },
-    //                     });
-    //                     craftSongLink = response.data;
-    //                     console.log(response.data.link);
-    //
-    //
-    //                 } catch (error) {
-    //                     console.error('Error sending description:', error);
-    //                 }
-    //             } catch (error) {
-    //                 console.error('Error uploading image:', error);
-    //             }
-    //         } else {
-    //             alert('The selected image is not in Base64 format.');
-    //         }
-    //     } else {
-    //         alert('Please select an image before crafting.');
-    //     }
-        try {
+       try {
             if (description === "") {
                 setDescription("No description");
                 return;
             }
             let apiUrl: string = `http://127.0.0.1:8000/describe?message=${description}&type=2`;
-            // let craftDescription: string = "";
 
             axios.get(apiUrl)
                 .then((response) => {
-                    setCraftDescription(response.data["response"])
-
-
-
+					setCraftDescription(response.data["response"]);
                 }).catch((error) => {
-                console.error('Axios error when fetching data from backend for description:', error);
+                	console.error('Axios error when fetching data from backend for description:', error);
             });
             try {
-                // TODO: add user to link
-                const response = await axios.get(`http://127.0.0.1:8000/user/user/description-deezer?description=${description}`, {
+				console.log(`http://127.0.0.1:8000/user/${username}/description-deezer?description=${description}`);
+				const response = await axios.get(`http://127.0.0.1:8000/user/${username}/description-deezer?description=${description}`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 });
-                setSong(response.data)
+				setSong(response.data["music"]);
             } catch (error) {
                 console.error('Error sending description:', error);
             }
-
-
         } catch (e) {
             console.error('Error fetching data from backend:', e);
         }
     };
-
 
 
     return (
@@ -144,7 +100,7 @@ export const CraftPost: React.FC = () => {
                             fontFamily: 'Inter, sans-serif',
                             fontSize: '20px'
                         }}
-                        startIcon={<AccessibleForwardIcon />}
+                        startIcon={<PersonIcon />}
                         onClick={routeChange}
                     >
                         {username}
